@@ -1,14 +1,18 @@
 package com.example.tinytimetracker
 
-import android.R.attr.button
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.app.ActivityOptions
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.TransitionDrawable
 import android.os.Build
 import android.os.Bundle
+import android.transition.Transition
 import android.view.Window
 import android.view.WindowManager
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -44,11 +48,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     fun changeColor() {
         var bigButton = findViewById(R.id.button3) as Button
         val buttonColor = bigButton.getBackground()
+       // Thread.sleep(1_000)
+        //bigButton.setBackgroundColor(C);
 
-        bigButton.setBackgroundColor(Color.parseColor("#F33939"));
+        val asda: ValueAnimator;
+        val R = 243
+        val G = 57
+        val B = 57
+
+
+
+        val valueAnimator = ValueAnimator.ofInt(0, 255)
+
+//2
+        valueAnimator.addUpdateListener {
+            // 3
+            val value = it.animatedValue as Int
+            // 4
+            bigButton.setBackgroundColor(Color.argb(value, R,G,B));
+        }
+
+//5
+        valueAnimator.interpolator = AccelerateInterpolator()
+        valueAnimator.duration = 700
+
+//6
+        valueAnimator.start()
+
+
+        var asd :Transition;
 
 
     }

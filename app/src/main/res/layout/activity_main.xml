@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="1"
-    android:background="#44C1FF"
-    android:backgroundTint="#FFFFFF"
+    android:background="#f7f7f7"
+    android:backgroundTint="#f0f0f0"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
