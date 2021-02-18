@@ -1,16 +1,21 @@
 package com.example.tinytimetracker
 
+import android.R.attr.button
 import android.app.ActivityOptions
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,12 +29,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         // get reference to button
+        var bigButton = findViewById(R.id.button3) as Button
+        // set on-click listener
+        bigButton.setOnClickListener {
+            changeColor()
+        }
+
+
+        // get reference to button
         val btn_click_me = findViewById(R.id.imageButton) as ImageButton
         // set on-click listener
         btn_click_me.setOnClickListener {
             openDetailPage()
         }
     }
+
+    fun changeColor() {
+        var bigButton = findViewById(R.id.button3) as Button
+        val buttonColor = bigButton.getBackground()
+
+        bigButton.setBackgroundColor(Color.parseColor("#F33939"));
+
+
+    }
+
 
     fun openDetailPage() {
 
