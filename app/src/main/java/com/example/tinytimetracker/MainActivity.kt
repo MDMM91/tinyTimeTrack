@@ -15,7 +15,11 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
+import android.widget.StackView
 import androidx.appcompat.app.AppCompatActivity
+import java.time.LocalDateTime
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             changeColor()
         }
 
+        val recents = findViewById(R.id.lastbookingStack) as LinearLayout
+        recents.setOnClickListener{
+            openDetailPage()
+        }
 
         // get reference to button
         val btn_click_me = findViewById(R.id.imageButton) as ImageButton
@@ -64,6 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         val valueAnimator = ValueAnimator.ofInt(0, 255)
 
+        val wrapper: DBContextEntityWrapper = DBContextEntityWrapper(this);
+        wrapper.addBookingEntry("");
+        wrapper.getBookings();
+
 //2
         valueAnimator.addUpdateListener {
             // 3
@@ -71,7 +83,9 @@ class MainActivity : AppCompatActivity() {
             // 4
             bigButton.setBackgroundColor(Color.argb(value, R,G,B));
         }
-
+        var asd222 =  Booking();
+        asd222.TimeStamp = java.util.Calendar.getInstance().time as java.util.Date?
+        bigButton.text = asd222.TimeStamp.toString();
 //5
         valueAnimator.interpolator = AccelerateInterpolator()
         valueAnimator.duration = 700
